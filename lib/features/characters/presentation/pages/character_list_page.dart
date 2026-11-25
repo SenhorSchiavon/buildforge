@@ -17,7 +17,7 @@ class _ListaPersonagensState extends State<ListaPersonagens> {
   @override
   void initState() {
     super.initState();
-    carregaPersonagens(items);
+    carregaPersonagens();
   }
 
   final List<Character> items = [
