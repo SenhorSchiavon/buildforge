@@ -12,7 +12,7 @@ class ListaPersonagens extends StatefulWidget {
 }
 
 class _ListaPersonagensState extends State<ListaPersonagens> {
-  var personagens = [];
+  List<Character> personagens = [];
   var isLoading = true;
   @override
   void initState() {
@@ -27,11 +27,17 @@ class _ListaPersonagensState extends State<ListaPersonagens> {
     Character(id: 4, characterClass: 'Arqueiro', level: 7, name: 'Robin'),
   ];
 
-  Future<void> carregaPersonagens(List<Character> items) async {
-    await Future.delayed(Duration(seconds: 2));
+  Future<List<Character>> loadCharacters() async {
+    await Future<void>.delayed(const Duration(seconds: 2));
+    return items;
+  }
+
+  Future<void> carregaPersonagens() async {
+    final fichas = await loadCharacters();
     if (!mounted) return;
+
     setState(() {
-      personagens = items;
+      personagens = fichas;
       isLoading = false;
     });
   }
