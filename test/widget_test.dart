@@ -10,7 +10,8 @@ void main() {
         home: ListaPersonagens(),
       ),
     );
-
+    expect(find.byType(CircularProgressIndicator), findsOneWidget);
+    await tester.pump(Duration(seconds: 2));
     expect(find.text('MEUS HERÓIS'), findsOneWidget);
     expect(find.text('Cleiton'), findsOneWidget);
     expect(find.byType(CharacterCard), findsNWidgets(4));
